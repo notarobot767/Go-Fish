@@ -1,17 +1,31 @@
 package model.deck
 
+import statics._
 import model.card._
 import scala.collection.mutable.Queue
 
-/** a playing card in the game
-  *
-  * @constructor create a new card with id, face, and suit
-  * @param id the integer id of the card (2-14)
-  * @param face the string representation of the id
-  * @parm suit the string representation of the card suit
-  */
-class deck extends Queue[Card] {
-
+class Deck extends Queue[Card] {
+  //ex) [5-C], [9-S], [5-H], [10-S]...
   override def toString: String = this.mkString(", ")
 
+  //count the number of cards in the deck
+  def count: Int = this.length
+
+  //create a new unshuffled deck
+  def createNew: Deck = {
+    this.clear
+    Statics.cardIDRange.foreach({c_id => Statics.cardSuits.foreach({c_suit => 
+      this.enqueue(Card(c_id, c_suit))})})
+    this
+  }
+
+  //shuffle a deck
+  def shuffle: Deck = {
+    val shuffled_deck = util.Random.shuffle(this)
+    this.clear; this ++= shuffled_deck
+    this
+  }
+
+  //draw a card
+  def draw: Card = this.dequeue
 }
