@@ -7,12 +7,12 @@ case class Player(val name: String) {
 
   override def toString: String = name
 
-  var points = 0
-  var cardCount = 0
-  val hand = Map[Int, List[Card]]()
+  private var points = 0
+  private var cardCount = 0
+  private val hand = Map[Int, List[Card]]()
 
   //if have set of 4, remove from hand and +1 to points
-  def check4(c_id: Int) = {
+  private def check4(c_id: Int) = {
     if(hand(c_id).length == 4) {
       this.points += 1; this.hand -= c_id; this.cardCount -= 4
 

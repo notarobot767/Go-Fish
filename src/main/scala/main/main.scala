@@ -10,10 +10,10 @@ object Main {
     val ctrl = new Controller(model)
     val mod = model.Game
 
-    /*
-    ctrl.initializeGame
+    
+    ctrl.initializeGame_unshuffled
     println(ctrl.showGameArea)
     sys.exit(0)
-    */
+    
   }
 }

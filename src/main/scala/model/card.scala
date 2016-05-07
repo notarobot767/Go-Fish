@@ -1,13 +1,5 @@
 package model
 
-/* class for a playing card
-id: Integer from 2 to 14
-
-suit: string representation of card suit
-  There are 4
-  Heart -> "H", Diamond -> "D", Spade -> "S", Club -> "C"
-  see statics
-*/
 case class Card(val id: Int, val suit: String) {
   //map id to string face value
   def getFace: String = this.id match {

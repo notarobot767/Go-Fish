@@ -3,7 +3,7 @@ package model
 object Statics {
 
   //player stuff
-  val players_arry = Array("Ender", "Eragon", "Sabriel", "Artemis")
+  val players_arry = Array("Ender", "Sabriel", "Eragon", "Artemis")
 
   //deck stuff
   val cardSuits = Array("H", "D", "S", "C")
