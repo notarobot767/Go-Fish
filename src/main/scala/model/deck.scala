@@ -1,7 +1,5 @@
-package model.deck
+package model
 
-import statics._
-import model.card._
 import scala.collection.mutable.Queue
 
 class Deck extends Queue[Card] {
@@ -28,4 +26,6 @@ class Deck extends Queue[Card] {
 
   //draw a card
   def draw: Card = this.dequeue
+
+  def show: String = s"*Deck ($count Cards)\n$this"
 }

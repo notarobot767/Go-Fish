@@ -1,24 +1,19 @@
 package main
 
 import model._
+import controller._
 
-object Main{
+object Main {
   
   def main(args: Array[String]): Unit = {
-    println("hello")
     val model = new Model
+    val ctrl = new Controller(model)
+    val mod = model.Game
 
-
-    model.Game.deck.createNew
-    println(model.Game.deck)
-
-    model.Game.deck.shuffle
-    println("\n")
-    println(model.Game.deck)
-
-    println("\n")
-    println(model.Game.deck.draw)
-
+    /*
+    ctrl.initializeGame
+    println(ctrl.showGameArea)
     sys.exit(0)
+    */
   }
 }

@@ -1,4 +1,4 @@
-package model.card
+package model
 
 /* class for a playing card
 id: Integer from 2 to 14
