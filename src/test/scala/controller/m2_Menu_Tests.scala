@@ -5,17 +5,11 @@ import model._
 import org.scalatest.FunSpec
 import org.scalatest.Matchers
 
-class m2_Menu_Test extends FunSpec with Matchers{
-
-  def fixture = new {
-    val model = new Model
-    val controller = new Controller(model)
-  }
-
-   describe("(commands to see the game universe)"){
+class m2_Menu_Test extends FunSpec with Matchers {
+   describe("(commands to see the game universe)") {
 
     //******* SHOW GAME AREA *******
-    it("showGameArea"){ val ctl = fixture.controller
+    it("showGameArea"){ val ctl = Fixture.instance.controller
       val expectedResultNone = "None"
       val expectedResult =
         "Ender (1 Cards, 1 Points)\n" +
@@ -43,7 +37,7 @@ class m2_Menu_Test extends FunSpec with Matchers{
     }
     
     //******* SHOW PLAYER ORDER *******
-    it("showPlayerOrder"){ val ctl = fixture.controller
+    it("showPlayerOrder"){ val ctl = Fixture.instance.controller
       val expectedResultNone = "None"
       val expectedResult = "Ender, Sabriel, Eragon, Artemis"
       
@@ -56,7 +50,7 @@ class m2_Menu_Test extends FunSpec with Matchers{
     }
 
     //******* ADVANCE ORDER *******
-    it("advanceOrder"){ val ctl = fixture.controller
+    it("advanceOrder"){ val ctl = Fixture.instance.controller
 
       val expectedResult_0_advances = "Ender, Sabriel, Eragon, Artemis"
       val expectedResult_1_advances = "Sabriel, Eragon, Artemis, Ender"

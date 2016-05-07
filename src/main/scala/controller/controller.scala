@@ -12,6 +12,13 @@ class Controller(val model: Model) {
   //check if deck is empty
   def isDeckEmpty: Boolean = mod.deck.isEmpty
   def isDeckNonEmpty: Boolean = !isDeckEmpty
+  def getDeck_count: Int = mod.deck.getCount
+
+  def getTotalPlayer_cardCount: Int = {
+    var c = 0
+    if(isPlayerNonEmpty) mod.players.foreach(p => c += p.getCardCount + p.getPoints*4)
+    c
+  }
 
   //show game universe
   def showGameArea: String = 

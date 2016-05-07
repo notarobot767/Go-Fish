@@ -7,7 +7,8 @@ class Deck extends Queue[Card] {
   override def toString: String = this.mkString(", ")
 
   //count the number of cards in the deck
-  def count: Int = this.length
+  private def count: Int = this.length
+  def getCount: Int = this.count
 
   //create a new unshuffled deck
   def createNew: Deck = {
