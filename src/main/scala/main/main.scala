@@ -11,8 +11,9 @@ object Main {
     val mod = model.Game
 
     
-    ctrl.initializeGame_unshuffled
+    ctrl.initializeGame
     println(ctrl.showGameArea)
+    println(ctrl.checkForWinner)
     sys.exit(0)
     
   }
