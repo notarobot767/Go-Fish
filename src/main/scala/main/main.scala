@@ -9,15 +9,13 @@ object Main {
     val model = new Model
     val ctrl = new Controller(model)
     val mod = model.Game
-
+    Welcome.print
     
-    ctrl.initializeGame_unshuffled
+    //ctrl.initializeGame_unshuffled
     //println(ctrl.showGameArea)
     //println(ctrl.checkForWinner)
 
-    mod.loader.load(mod.players(0), mod.players(1), 14, true)
-    sys.exit(0)
-    
+    //mod.loader.load(mod.players(0), mod.players(1), 14, true)
     
   }
 }

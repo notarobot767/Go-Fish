@@ -63,6 +63,8 @@ class Controller(val model: Model) {
 
   def doMove(console: Boolean = false) = {
     //strat_map(playerUp).findMove(playerUp)
+    //val (them, c_id) =
+
     ???
   }
 
