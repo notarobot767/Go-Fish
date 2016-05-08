@@ -17,6 +17,7 @@ case class Player(val name: String) {
 
   //actual hand mapping
   private val hand = Map[Int, List[Card]]()
+  def get_hand: Map[Int, List[Card]] = this.hand
 
   //if have set of 4, remove from hand and +1 to points
   private def check4(c_id: Int) = {
@@ -32,6 +33,13 @@ case class Player(val name: String) {
     this.cardCount += 1
     this.hand += card.id -> (card +: hand.getOrElse(card.id, List[Card]()))
     this.check4(card.id)
+  }
+
+  def addCards(c_lst: List[Card]) = c_lst.foreach(c => this.addCard(c))
+
+  def remove(c_id: Int) ={
+    this.cardCount -= this.get_hand(c_id).length
+    this.hand -= c_id
   }
 
   //show game space of players

@@ -11,10 +11,13 @@ object Main {
     val mod = model.Game
 
     /*
-    ctrl.initializeGame
+    ctrl.initializeGame_unshuffled
     println(ctrl.showGameArea)
     println(ctrl.checkForWinner)
+
+    mod.loader(mod.players(0), mod.players(1), Card(14, "Z"))
     sys.exit(0)
     */
+    
   }
 }

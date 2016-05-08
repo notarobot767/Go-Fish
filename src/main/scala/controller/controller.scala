@@ -59,10 +59,11 @@ class Controller(val model: Model) {
   //check if a player has won the game
   def checkForWinner: String = if(isWinner) leader.toString else "None"
 
-  private playerUp: Player = mod.players.head
+  private def playerUp: Player = mod.players.head
 
   def doMove(console: Boolean = false) = {
-    strat_map(playerUp).findMove(playerUp)
+    //strat_map(playerUp).findMove(playerUp)
+    ???
   }
 
   def doTurn(console: Boolean = false) = {

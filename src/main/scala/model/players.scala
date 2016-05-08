@@ -9,6 +9,8 @@ class Players extends Queue[Player] {
   //advance order of players
   def advanceOrder: Boolean = {this.enqueue(this.dequeue); true}
 
+  def nextUp: Player = this.tail.head
+
   //set up new players from Statics
   def initialize = {
     this.clear
