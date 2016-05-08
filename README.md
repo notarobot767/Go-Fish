@@ -1,8 +1,9 @@
 # Go-Fish
 object oriented game simulation project using Scala
+
 CS403 AY16-2
 
-By Cadet Noah Ogrydziak, B1 '17
+By Cadet Noah Ogrydziak,'17 B1
 
 ##Description:
 Go Fish is a card game usually played by two up to five players using a standard 52 card deck, no Jokers. A player wins by having the most points at the end of the games by laying down sets of four of a kind aquired by either drawing or actions in game.
