@@ -9,9 +9,14 @@ class Players extends Queue[Player] {
   //advance order of players
   def advanceOrder: Boolean = {this.enqueue(this.dequeue); true}
 
-  def nextUp: Player = this.tail.head
-
   var players_arry = Array[Player]()
+
+  private var leader = Player("place_holder")
+  def get_leader: String = this.leader.toString 
+
+  //update the leader (how has most points currently)
+  def update_leader = players_arry.foreach(p =>
+      if(p.getPoints > this.leader.getPoints) this.leader = p)
 
   //set up new players from Statics
   def initialize = {

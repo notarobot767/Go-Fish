@@ -23,6 +23,7 @@ class Loader(deck: Deck, players: Players) {
 
       you.addCards(them.get_hand(c_id))
       them.remove(c_id)
+      players.update_leader
     }
 
     //case they do not have card
@@ -50,9 +51,10 @@ class Loader(deck: Deck, players: Players) {
           else {
             output += s"$you: Nuts, I did not get the card, " +
               "and now my turn is over.\n" +
-              players.nextUp + ": Yaaa, It's now my turn!\n"
+              players.tail.head + ": Yaaa, It's now my turn!\n"
             didEndTurn = true
           }
+        players.update_leader
       }
     }
 
