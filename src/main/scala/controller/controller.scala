@@ -7,41 +7,42 @@ class Controller(val model: Model) {
   private val players = mod.players
   private val deck = mod.deck
   private val ai = mod.ai
+  private val loader = mod.loader
 
   //check if players exist
-  def isPlayerEmpty: Boolean = mod.players.isEmpty
+  def isPlayerEmpty: Boolean = players.isEmpty
   def isPlayerNonEmpty: Boolean = !isPlayerEmpty
 
   //check if deck is empty
-  def isDeckEmpty: Boolean = mod.deck.isEmpty
+  def isDeckEmpty: Boolean = deck.isEmpty
   def isDeckNonEmpty: Boolean = !isDeckEmpty
-  def getDeck_count: Int = mod.deck.getCount
+  def getDeck_count: Int = deck.getCount
 
   def getTotalPlayer_cardCount: Int = {
-    var c = 0
-    if(isPlayerNonEmpty) mod.players.foreach(p => c += p.getCardCount + p.getPoints*4)
+    var c = 0; if(isPlayerNonEmpty) players.foreach(p =>
+      c += p.getCardCount + p.getPoints*4)
     c
   }
 
   //show game universe
   def showGameArea: String = 
-    if(isPlayerEmpty) "None" else mod.players.show + mod.deck.show
+    if(isPlayerEmpty) "None" else players.show + deck.show
 
   //show order of players
-  def showPlayerOrder: String = if(isPlayerEmpty) "None" else mod.players.toString
+  def showPlayerOrder: String = if(isPlayerEmpty) "None" else players.toString
 
   //advance the order of the players
-  def advanceOrder: Boolean = if(isPlayerEmpty) false else mod.players.advanceOrder
+  def advanceOrder: Boolean = if(isPlayerEmpty) false else players.advanceOrder
 
   private def draw5 =
-      mod.players.foreach(p => for(x <- 0 until 5) p.addCard(mod.deck.draw))
+      players.foreach(p => for(x <- 0 until 5) p.addCard(deck.draw))
 
   private def initializeGame_bare = {
-    mod.players.initialize; mod.deck.createNew; mod.ai.initialize
+    players.initialize; deck.createNew; ai.initialize
   }
 
   //set conditions for new game
-  def initializeGame = {initializeGame_bare; mod.deck.shuffle; draw5}
+  def initializeGame = {initializeGame_bare; deck.shuffle; draw5}
 
   //same as initializeGame but dont shuffle deck
   def initializeGame_unshuffled = {initializeGame_bare; draw5}
@@ -52,7 +53,7 @@ class Controller(val model: Model) {
   def isWinner: Boolean = {
     if(isPlayerNonEmpty && isDeckEmpty) {
       var flag = true
-      mod.players.foreach({p =>
+      players.foreach({p =>
         if(p.getPoints > this.leader.getPoints) this.leader = p 
         if(p.getCardCount != 0) flag = false
       })
@@ -64,13 +65,12 @@ class Controller(val model: Model) {
   //check if a player has won the game
   def checkForWinner: String = if(isWinner) leader.toString else "None"
 
-  private def playerUp: Player = mod.players.head
-
   def doMove_manuel(you: Player, them: Player, c_id: Int, console: Boolean = false): Boolean =
-    if(isPlayerNonEmpty) {mod.loader.load(you, them, c_id, console); true}
+    if(isPlayerNonEmpty) {loader.load(you, them, c_id, console); true}
     else false
 
-  def doMove(console: Boolean = false) = if(isPlayerEmpty) false else ai.doMove(console)
+  def doMove(console: Boolean = false) =
+    if(isPlayerEmpty) false else {ai.doMove(console); true}
 
   def doTurn(console: Boolean = false) = {
     ???
@@ -83,7 +83,7 @@ class Controller(val model: Model) {
   def set(p: Int, s: Int): Boolean = {
     if(isPlayerEmpty) return false
     val upperStrat = mod.ai.strat_idMap.maxBy(_._1)._1
-    val upperP = mod.players.length
+    val upperP = players.length
     if(s >= 1 && s < upperStrat && p >= 0 && p < upperP) {
       ai.strat_playerMap += players.players_arry(p) -> ai.strat_idMap(s)
       true
@@ -94,8 +94,8 @@ class Controller(val model: Model) {
   def showStrategies: String = {
     if(isPlayerEmpty) "None"
     else {
-      var ans_str = ""; mod.players.players_arry.foreach(p =>
-        ans_str += s"$p\t-> " + mod.ai.strat_playerMap(p) + "\n")
+      var ans_str = ""; players.players_arry.foreach(p =>
+        ans_str += s"$p\t-> " + ai.strat_playerMap(p) + "\n")
       ans_str.trim
     }
   }
