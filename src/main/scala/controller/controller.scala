@@ -48,7 +48,14 @@ class Controller(val model: Model) {
   def initializeGame_unshuffled = {initializeGame_bare; draw5}
 
   //is there a winner?
-  def isWinner: Boolean = if(isPlayerNonEmpty && isDeckEmpty) true else false
+  def isWinner: Boolean = {
+    if(isPlayerNonEmpty && isDeckEmpty) {
+      players.foreach(p => if(p.getCardCount != 0) return false)
+      true
+    }
+
+    else false
+  }
 
   //check if a player has won the game
   def checkForWinner: String = if(isWinner) players.get_leader.toString else "None"
@@ -60,13 +67,9 @@ class Controller(val model: Model) {
   def doMove(console: Boolean = false) =
     if(isPlayerEmpty) false else {ai.doMove(console); true}
 
-  def doTurn(console: Boolean = false) = {
-    ???
-  }
+  def doTurn(console: Boolean = false) = for(x <- 0 until players.length) doMove(console)
 
-  def doGame(console: Boolean = false) = {
-    ???
-  }
+  def doGame(console: Boolean = false) = while(!isWinner) doMove(console)
 
   def set(p: Int, s: Int): Boolean = {
     if(isPlayerEmpty) return false

@@ -11,13 +11,12 @@ object Main {
     val mod = model.Game
     Welcome.print
 
-    ctrl.initializeGame_unshuffled
+    ctrl.initializeGame
     //println(ctrl.showGameArea)
     //println(ctrl.checkForWinner)
     //println(ctrl.showStrategies)
     //println(ctrl.showStrategies)
 
-    ctrl.doMove(true)
-    
+    ctrl.doGame(true)
   }
 }

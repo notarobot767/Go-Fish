@@ -32,7 +32,7 @@ class Loader(deck: Deck, players: Players) {
 
       //case deck is empty
       if(deck.isEmpty) {
-        output += s"$them: Well, the deck is empty, so my turn is over.\n"
+        output += s"$you: Well, the deck is empty, so my turn is over.\n"
         didEndTurn = true
       }
 
@@ -60,8 +60,25 @@ class Loader(deck: Deck, players: Players) {
 
     if(!didEndTurn) output += s"$you: It's still my turn!\n"
     else players.advanceOrder
-    output += "\n***Updated Hand***\n" + players.show + deck.show + "\n"*3
+    output += show_updatedHand
     if(console) println(output)
     didEndTurn
   }
+
+  def load_emptyHand(you: Player, console: Boolean = false) = {
+    var output = s"$you: Well I am out of cards, "
+    if(deck.isEmpty) output += "and the deck is empty!"
+    else {
+      output += "so I guess I will draw."
+      val drawn = deck.draw
+      you.addCard(drawn)
+      output += s"\n\n***$you drew a $drawn***\n"
+      output += show_updatedHand
+    }
+    players.advanceOrder
+    if(console) println(output)
+  }
+
+  def show_updatedHand: String =
+    "\n***Updated Hand***\n" + players.show + deck.show + "\n"*3
 }

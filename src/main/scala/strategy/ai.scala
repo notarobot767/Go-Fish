@@ -12,10 +12,28 @@ class AI(deck: Deck, players: Players, loader: Loader) {
   private var i = 1
   private val default_strat = 1
   private var console_flag = false
+  private val random = scala.util.Random
+
+  //return random player (other current player up)
+  private def returnRndPlayer(): Player =
+    return players.tail(random.nextInt(players.length-1))
+
+  //return random card id from player (that you have)
+  private def returnRndCardId(p: Player): Int = {
+    val lst = p.get_hand.keys.toList
+    if(lst.nonEmpty) lst(random.nextInt(lst.length))
+    else -1
+  }
 
   def doMove_oldMan(p: Player): Boolean = {
-    if(console_flag) println("doing move with AI old man!")
-    true
+    while(true) {
+      //empty hand
+      if(p.get_hand.isEmpty) {loader.load_emptyHand(p, console_flag); return true}
+      //random valid move
+      if(loader.load(p, this.returnRndPlayer, this.returnRndCardId(p), this.console_flag))
+        return true
+    }
+    false
   }; strat_idMap += i -> Strat("Old Man", doMove_oldMan); i += 1
 
   def doMove_god(p: Player): Boolean = {
@@ -41,9 +59,8 @@ class AI(deck: Deck, players: Players, loader: Loader) {
 
   def doMove(console: Boolean = false) = {
     if(console) console_flag = true
-    val nxtP = players.head
-    strat_playerMap(nxtP).findMoves(nxtP)
+    val p = players.head
+    strat_playerMap(p).findMoves(p)
     console_flag = false
   }
-
 }
