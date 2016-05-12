@@ -11,10 +11,13 @@ class Players extends Queue[Player] {
 
   def nextUp: Player = this.tail.head
 
+  var players_arry = Array[Player]()
+
   //set up new players from Statics
   def initialize = {
     this.clear
     Statics.players_arry.foreach(p => this.enqueue(Player(p)))
+    players_arry = this.toArray
   }
 
   //show players

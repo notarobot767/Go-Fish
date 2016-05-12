@@ -3,7 +3,10 @@ package controller
 import model._
 
 class Controller(val model: Model) {
-  val mod = model.Game
+  private val mod = model.Game
+  private val players = mod.players
+  private val deck = mod.deck
+  private val ai = mod.ai
 
   //check if players exist
   def isPlayerEmpty: Boolean = mod.players.isEmpty
@@ -33,7 +36,9 @@ class Controller(val model: Model) {
   private def draw5 =
       mod.players.foreach(p => for(x <- 0 until 5) p.addCard(mod.deck.draw))
 
-  private def initializeGame_bare = {mod.players.initialize; mod.deck.createNew}
+  private def initializeGame_bare = {
+    mod.players.initialize; mod.deck.createNew; mod.ai.initialize
+  }
 
   //set conditions for new game
   def initializeGame = {initializeGame_bare; mod.deck.shuffle; draw5}
@@ -61,12 +66,11 @@ class Controller(val model: Model) {
 
   private def playerUp: Player = mod.players.head
 
-  def doMove(console: Boolean = false) = {
-    //strat_map(playerUp).findMove(playerUp)
-    //val (them, c_id) =
+  def doMove_manuel(you: Player, them: Player, c_id: Int, console: Boolean = false): Boolean =
+    if(isPlayerNonEmpty) {mod.loader.load(you, them, c_id, console); true}
+    else false
 
-    ???
-  }
+  def doMove(console: Boolean = false) = if(isPlayerEmpty) false else ai.doMove(console)
 
   def doTurn(console: Boolean = false) = {
     ???
@@ -76,11 +80,23 @@ class Controller(val model: Model) {
     ???
   }
 
-  def set(s: Int): Boolean = {
-    ???
+  def set(p: Int, s: Int): Boolean = {
+    if(isPlayerEmpty) return false
+    val upperStrat = mod.ai.strat_idMap.maxBy(_._1)._1
+    val upperP = mod.players.length
+    if(s >= 1 && s < upperStrat && p >= 0 && p < upperP) {
+      ai.strat_playerMap += players.players_arry(p) -> ai.strat_idMap(s)
+      true
+    }
+    else false
   }
 
   def showStrategies: String = {
-    ???
+    if(isPlayerEmpty) "None"
+    else {
+      var ans_str = ""; mod.players.players_arry.foreach(p =>
+        ans_str += s"$p\t-> " + mod.ai.strat_playerMap(p) + "\n")
+      ans_str.trim
+    }
   }
 }
