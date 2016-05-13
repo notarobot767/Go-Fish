@@ -1,3 +1,10 @@
+/*
+Controller Class
+  Use these functions to manipulate the model
+  otherwise, may put game in unintended state
+  this is where error checking for legal moves is done
+*/
+
 package controller
 
 import model._
