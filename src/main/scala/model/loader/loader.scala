@@ -1,25 +1,18 @@
 package model.loader
 
 import model._
+import model.statics.Statics
 
 class Loader(data: Stencil) {
   private val deck = data.deck
   private val players = data.players
-  
-  //wasnot sure how to reuse from card class
-  private def getFace(c_id: Int): String = c_id match {
-    case x if(x >= 2 && x <= 10) => c_id.toString
-    case 11 => "J"
-    case 12 => "Q"
-    case 13 => "K"
-    case 14 => "A"
-  }
 
   def load(you: Player, them: Player, c_id: Int, console: Boolean = false): Boolean = {
     var output = ""
     var didEndTurn = false
 
-    output += s"\n$you: $them, do you have any " + getFace(c_id) + "'s?\n"
+    output += s"\n$you: $them, do you have any " +
+      Statics.getFace(c_id) + "'s?\n"
 
     //case they have card asked for
     if(them.get_hand.contains(c_id)) {
