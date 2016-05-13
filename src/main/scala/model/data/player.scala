@@ -1,4 +1,9 @@
-package model
+/*
+Player class
+  A player in the game
+*/
+
+package model.data
 
 import scala.collection.mutable.Map
 import scala.collection.mutable.ListBuffer

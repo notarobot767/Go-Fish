@@ -1,4 +1,10 @@
-package model
+/*
+Players class
+  holds the players
+  keeps track of who's turn it is
+*/
+
+package model.data
 
 import model.statics.Statics
 

@@ -1,6 +1,12 @@
+/*
+AI controller
+  manages the AI functions
+  maps an AI to a player
+*/
+
 package model.strategy
 
-import model._
+import model.data._
 import model.loader._
 
 import scala.collection.mutable.Map

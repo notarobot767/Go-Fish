@@ -1,6 +1,16 @@
+/*
+Loader class
+  logic behind making a move
+    moves cards between players and deck
+    updates scores
+    
+  stencil: the game data
+
+*/
+
 package model.loader
 
-import model._
+import model.data._
 import model.statics.Statics
 
 class Loader(data: Stencil) {

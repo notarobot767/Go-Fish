@@ -1,3 +1,8 @@
+/*
+Welcome Object
+  Cool fish ascii art printed in main
+*/
+
 package model.statics
 
 object Welcome {

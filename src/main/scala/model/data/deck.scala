@@ -1,4 +1,9 @@
-package model
+/*
+Deck Class
+  the deck of cards
+*/
+
+package model.data
 
 import model.statics.Statics
 
@@ -9,8 +14,7 @@ class Deck extends Queue[Card] {
   override def toString: String = this.mkString(", ")
 
   //count the number of cards in the deck
-  private def count: Int = this.length
-  def getCount: Int = this.count
+  def count: Int = this.length
 
   //create a new unshuffled deck
   def createNew: Deck = {
@@ -23,12 +27,12 @@ class Deck extends Queue[Card] {
   //shuffle a deck
   def shuffle: Deck = {
     val shuffled_deck = util.Random.shuffle(this)
-    this.clear; this ++= shuffled_deck
-    this
+    this.clear; this ++= shuffled_deck; this
   }
 
   //draw a card
   def draw: Card = this.dequeue
 
+  //used in showGameArea
   def show: String = s"*Deck ($count Cards)\n$this"
 }

@@ -1,6 +1,7 @@
 package controller
 
 import model._
+import model.data._
 
 class Controller(val model: Model) {
   private val mod = model.Game
@@ -16,7 +17,7 @@ class Controller(val model: Model) {
   //check if deck is empty
   def isDeckEmpty: Boolean = deck.isEmpty
   def isDeckNonEmpty: Boolean = !isDeckEmpty
-  def getDeck_count: Int = deck.getCount
+  def getDeck_count: Int = deck.count
 
   def getTotalPlayer_cardCount: Int = {
     var c = 0; if(isPlayerNonEmpty) players.foreach(p =>
