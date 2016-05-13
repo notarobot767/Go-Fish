@@ -1,5 +1,7 @@
 package model
 
+import model.statics.Statics
+
 import scala.collection.mutable.Queue
 
 class Deck extends Queue[Card] {

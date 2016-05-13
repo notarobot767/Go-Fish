@@ -1,12 +1,12 @@
 package model
 
-import strategy._
+import model.strategy._
+import model.loader._
 
 class Model {
   object Game {
-    val deck = new Deck
-    val players = new Players
-    val loader = new Loader(deck, players)
-    val ai = new AI(deck, players, loader)
+    val data = Stencil(new Deck, new Players)
+    val loader = new Loader(data)
+    val ai = new AI(data, loader)
   }
 }

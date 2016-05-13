@@ -1,6 +1,7 @@
 package main
 
 import model._
+import model.statics.Welcome
 import controller._
 
 object Main {
@@ -17,6 +18,6 @@ object Main {
     //println(ctrl.showStrategies)
     //println(ctrl.showStrategies)
 
-    ctrl.doGame(true)
+    //ctrl.doGame(true)
   }
 }

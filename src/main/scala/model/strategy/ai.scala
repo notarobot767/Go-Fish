@@ -1,10 +1,13 @@
-package strategy
+package model.strategy
 
 import model._
+import model.loader._
 
 import scala.collection.mutable.Map
 
-class AI(deck: Deck, players: Players, loader: Loader) {
+class AI(data: Stencil, loader: Loader) {
+  private val deck = data.deck
+  private val players = data.players
 
   val strat_playerMap = Map[Player, Strat]()
   val strat_idMap = Map[Int, Strat]()

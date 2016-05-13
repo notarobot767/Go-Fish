@@ -4,8 +4,8 @@ import model._
 
 class Controller(val model: Model) {
   private val mod = model.Game
-  private val players = mod.players
-  private val deck = mod.deck
+  private val players = mod.data.players
+  private val deck = mod.data.deck
   private val ai = mod.ai
   private val loader = mod.loader
 

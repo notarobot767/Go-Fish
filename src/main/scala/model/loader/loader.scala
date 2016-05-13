@@ -1,6 +1,11 @@
-package model
+package model.loader
 
-class Loader(deck: Deck, players: Players) {
+import model._
+
+class Loader(data: Stencil) {
+  private val deck = data.deck
+  private val players = data.players
+  
   //wasnot sure how to reuse from card class
   private def getFace(c_id: Int): String = c_id match {
     case x if(x >= 2 && x <= 10) => c_id.toString
