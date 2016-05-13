@@ -28,7 +28,7 @@ class Controller(val model: Model) {
 
   def getTotalPlayer_cardCount: Int = {
     var c = 0; if(isPlayerNonEmpty) players.foreach(p =>
-      c += p.getCardCount + p.getPoints*4)
+      c += p.getCardCount + p.get_points*4)
     c
   }
 
@@ -81,10 +81,10 @@ class Controller(val model: Model) {
 
   def set(p: Int, s: Int): Boolean = {
     if(isPlayerEmpty) return false
-    val upperStrat = mod.ai.strat_idMap.maxBy(_._1)._1
+    val upperStrat = mod.ai.get_strat_idMap.maxBy(_._1)._1
     val upperP = players.length
     if(s >= 1 && s < upperStrat && p >= 0 && p < upperP) {
-      ai.strat_playerMap += players.players_arry(p) -> ai.strat_idMap(s)
+      ai.strat_playerMap += players.players_arry(p) -> ai.get_strat_idMap(s)
       true
     }
     else false

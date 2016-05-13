@@ -11,9 +11,9 @@ package model.data
 import model.statics.Statics
 
 case class Card(val id: Int, val suit: Char) {
-  //map id to string face value
+  //map id to string face value; see Statics
   def getFace: String = Statics.getFace(this.id)
 
-  //string representation: ex) 2 of Hears -> "[2-H]"
+  //string representation: ex) 2 of Hearts -> "[2-H]"
   override def toString: String = "[" + this.getFace + s"-$suit]"
 }

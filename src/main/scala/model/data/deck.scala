@@ -1,6 +1,7 @@
 /*
 Deck Class
   the deck of cards
+  represented by a Queue
 */
 
 package model.data
@@ -18,9 +19,9 @@ class Deck extends Queue[Card] {
 
   //create a new unshuffled deck
   def createNew: Deck = {
-    this.clear
-    Statics.cardIDRange.foreach({c_id => Statics.cardSuits.foreach({c_suit => 
-      this.enqueue(Card(c_id, c_suit))})})
+    this.clear; Statics.cardIDRange.foreach(c_id =>
+      Statics.cardSuits.foreach(c_suit =>
+      this.enqueue(Card(c_id, c_suit))))
     this
   }
 

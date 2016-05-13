@@ -1,13 +1,6 @@
 /*
 Main Object
   Hey you found me!
-  test the controller functions here
-  
-  open cmd in root folder -> type "sbt" -> then "run" or "test"
-
-  or if you want an output file if much data
-
-  while in root type "sbt run > output.txt"
 */
 
 package main
@@ -24,15 +17,28 @@ object Main {
     val mod = model.Game
     Welcome.print
 
+
     /**********************************
-    * Test controller functions below *
-    *********************************/
+    * Test controller functions here  *
+    **********************************/
 
     ctrl.initializeGame
     println(ctrl.showGameArea)
     //println(ctrl.checkForWinner)
     //println(ctrl.showStrategies)
-    //println(ctrl.showStrategies)
     ctrl.doGame(true)
+
+    /***********************************************
+    *          How to use                          *
+    ************************************************
+    * open a command promt/terminal in root folder *
+    *                                              *
+    * Method 1: (output to screen)                 *
+    *   type "sbt" then "run" or "test"            *
+    *                                              *
+    * Method 2: (output to file)                   *
+    *   "sbt run > output.txt" or                  *
+    *   "sbr test > output.txt"                    *
+    ***********************************************/
   }
 }

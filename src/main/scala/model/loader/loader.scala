@@ -29,8 +29,8 @@ class Loader(data: Stencil) {
       output += s"$them: Yes, I have " + them.get_hand(c_id).length +
         " of those.\n"
 
-      you.addCards(them.get_hand(c_id))
-      them.remove(c_id)
+      //swap cards and update leader if needed
+      you.addCards(them.get_hand(c_id)); them.remove(c_id)
       players.update_leader
     }
 
@@ -51,15 +51,14 @@ class Loader(data: Stencil) {
           output += s"\n***$you drew a $drawn***\n"
           
           //check if drawn card is what asked for
-          if(c_id == drawn.id) {
+          if(c_id == drawn.id)
             output += s"$you: Nice, I got the card.\n"
-          }
 
           //did not get card from drawing
           else {
             output += s"$you: Nuts, I did not get the card, " +
               "and now my turn is over.\n" +
-              players.tail.head + ": Yaaa, It's now my turn!\n"
+              players.upNext + ": Yaaa, It's now my turn!\n"
             didEndTurn = true
           }
         players.update_leader

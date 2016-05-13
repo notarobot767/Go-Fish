@@ -10,11 +10,12 @@ import scala.collection.mutable.ListBuffer
 
 case class Player(val name: String) {
 
+  //name of player by default
   override def toString: String = name
 
-  //player points
+  //player points as variable instead of traversing map each time
   private var points = 0
-  def getPoints = this.points
+  def get_points = this.points
 
   //number of cards in hand; does not include sets
   private var cardCount = 0
@@ -29,25 +30,27 @@ case class Player(val name: String) {
     if(hand(c_id).length == 4) {
       this.points += 1; this.hand -= c_id; this.cardCount -= 4
     }
-    else if(this.hand(c_id).length > 1)
-      this.hand += c_id -> this.hand(c_id).sortBy(_.suit)
+    else if(this.get_hand(c_id).length > 1)
+      this.hand += c_id -> this.get_hand(c_id).sortBy(_.suit)
   }
 
-  //draw a card from deck and add to hand
+  //add a card to hand
   def addCard(card: Card) = {
     this.cardCount += 1
     this.hand += card.id -> (card +: hand.getOrElse(card.id, List[Card]()))
     this.check4(card.id)
   }
 
+  //add a list of cards to hand
   def addCards(c_lst: List[Card]) = c_lst.foreach(c => this.addCard(c))
 
-  def remove(c_id: Int) ={
+  //remove all cards of id c_id
+  def remove(c_id: Int) = {
     this.cardCount -= this.get_hand(c_id).length
     this.hand -= c_id
   }
 
-  //show game space of players
+  //show game space of players; used is showGameArea
   def show: String = {
     def showHand: String = {
       if(this.cardCount == 0) ""
