@@ -74,7 +74,21 @@ class m3_Menu_Test extends FunSpec with Matchers {
           //in his turn before passing off to Sabriel
         //we can assume there are always cards in the deck
           //at the start of a game
+
+      //not yet complete
+      true should be(false)
     }
 
+    //******* DO Turn *******
+    it("doTurn") { val ctl = Fixture.instance.controller
+      //tests not yet built
+      true should be(false)
+    }
+
+    //******* DO Game *******
+    it("doGame") { val ctl = Fixture.instance.controller
+      //tests not yet built
+      true should be(false)
+    }
   }
 }
