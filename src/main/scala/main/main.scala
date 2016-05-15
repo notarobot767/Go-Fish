@@ -22,11 +22,12 @@ object Main {
     ***********************************************/
 
     ctrl.initializeGame
-    println(ctrl.showStrategies)
+    //println(ctrl.showStrategies)
     //println(ctrl.showGameArea)
     //println(ctrl.showStrategies)
-    //ctrl.doGame()
-    //println(ctrl.checkForWinner)
+    ctrl.set(0, 2)
+    ctrl.doGame(true)
+    println(ctrl.checkForWinner)
 
     /***********************************************
     *          How to use                          *

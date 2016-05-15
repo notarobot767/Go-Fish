@@ -72,7 +72,7 @@ class Loader(data: Stencil) {
     didEndTurn
   }
 
-  def load_emptyHand(you: Player) = {
+  def load_emptyHand(you: Player): Boolean = {
     var output = s"$you: Well I am out of cards, "
     if(deck.isEmpty) output += "and the deck is empty!"
     else {
@@ -84,6 +84,7 @@ class Loader(data: Stencil) {
     }
     players.advanceOrder
     if(data.console) println(output)
+    true
   }
 
   def show_updatedHand: String =
