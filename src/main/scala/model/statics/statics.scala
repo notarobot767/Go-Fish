@@ -24,4 +24,7 @@ object Statics {
     case 13 => "K"
     case 14 => "A"
   }
+
+  //default strategy each player will be assigned
+  val default_strat = 1
 }

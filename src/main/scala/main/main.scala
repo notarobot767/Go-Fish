@@ -17,10 +17,9 @@ object Main {
     val mod = model.Game
     Welcome.print
 
-
-    /**********************************
-    * Test controller functions here  *
-    **********************************/
+    /***********************************************
+    * Test controller functions here               *
+    ***********************************************/
 
     ctrl.initializeGame
     println(ctrl.showGameArea)

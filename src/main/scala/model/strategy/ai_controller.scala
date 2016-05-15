@@ -22,9 +22,6 @@ class AI_Controller(data: Stencil, loader: Loader) {
   private val strat_idMap = Map[Int, Strat]()
   def get_strat_idMap: Map[Int, Strat] = this.strat_idMap
 
-  //default strategy each player will be assigned
-  private val default_strat = 1
-
   //map each player to default strat ID
   def initialize = {
     var i = 1
@@ -36,7 +33,7 @@ class AI_Controller(data: Stencil, loader: Loader) {
 
     strat_playerMap.clear
     players.foreach(p =>
-      strat_playerMap += p -> strat_idMap(default_strat))
+      strat_playerMap += p -> strat_idMap(Statics.default_strat))
   }
 
   //do a move based on player up and his strategy
