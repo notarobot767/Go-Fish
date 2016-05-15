@@ -6,4 +6,6 @@ Stencil class
 
 package model.data
 
-case class Stencil(deck: Deck, players: Players)
+case class Stencil(deck: Deck, players: Players) {
+  var console = false
+}

@@ -69,11 +69,16 @@ class Controller(val model: Model) {
   def checkForWinner: String = if(isWinner) players.get_leader.toString else "None"
 
   def doMove_manuel(you: Player, them: Player, c_id: Int, console: Boolean = false): Boolean =
-    if(isPlayerNonEmpty) {loader.load(you, them, c_id, console); true}
+    if(isPlayerNonEmpty) {loader.load(you, them, c_id); true}
     else false
 
   def doMove(console: Boolean = false) =
-    if(isPlayerEmpty) false else {ai.doMove(console); true}
+    if(isPlayerEmpty) false
+    else {
+      if(console) mod.data.console = true
+      ai.doMove
+      mod.data.console = false
+    }
 
   def doTurn(console: Boolean = false) = for(x <- 0 until players.length) doMove(console)
 

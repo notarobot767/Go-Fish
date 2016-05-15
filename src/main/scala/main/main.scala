@@ -24,9 +24,9 @@ object Main {
 
     ctrl.initializeGame
     println(ctrl.showGameArea)
-    //println(ctrl.checkForWinner)
     //println(ctrl.showStrategies)
-    ctrl.doGame(true)
+    ctrl.doGame()
+    println(ctrl.checkForWinner)
 
     /***********************************************
     *          How to use                          *

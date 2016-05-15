@@ -17,7 +17,7 @@ class Loader(data: Stencil) {
   private val deck = data.deck
   private val players = data.players
 
-  def load(you: Player, them: Player, c_id: Int, console: Boolean = false): Boolean = {
+  def load(you: Player, them: Player, c_id: Int): Boolean = {
     var output = ""
     var didEndTurn = false
 
@@ -68,11 +68,11 @@ class Loader(data: Stencil) {
     if(!didEndTurn) output += s"$you: It's still my turn!\n"
     else players.advanceOrder
     output += show_updatedHand
-    if(console) println(output)
+    if(data.console) println(output)
     didEndTurn
   }
 
-  def load_emptyHand(you: Player, console: Boolean = false) = {
+  def load_emptyHand(you: Player) = {
     var output = s"$you: Well I am out of cards, "
     if(deck.isEmpty) output += "and the deck is empty!"
     else {
@@ -83,7 +83,7 @@ class Loader(data: Stencil) {
       output += show_updatedHand
     }
     players.advanceOrder
-    if(console) println(output)
+    if(data.console) println(output)
   }
 
   def show_updatedHand: String =

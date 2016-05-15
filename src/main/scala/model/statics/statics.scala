@@ -1,6 +1,6 @@
 /*
 Statics Object
-  Stuff in model that is static (hardcoded) or should be global
+  Stuff in model that is static (hardcoded)
 */
 
 package model.statics
