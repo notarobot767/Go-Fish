@@ -17,6 +17,8 @@ class Controller(val model: Model) {
   private val ai = mod.ai
   private val loader = mod.loader
 
+  def get_deck: Deck = this.deck
+
   //check if players exist
   def isPlayerEmpty: Boolean = players.isEmpty
   def isPlayerNonEmpty: Boolean = !isPlayerEmpty

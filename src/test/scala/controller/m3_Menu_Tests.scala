@@ -1,7 +1,5 @@
 package controller
 
-import model._
-
 import org.scalatest.FunSpec
 import org.scalatest.Matchers
 
@@ -49,24 +47,34 @@ class m3_Menu_Test extends FunSpec with Matchers {
       ctl.initializeGame
       ctl.checkForWinner should be(expectedResult)
 
-      //VERY unlikely to win after 1 move
-      //ctl.doMove(false)
-      //ctl.checkForWinner should be(expectedResult)
-
-      //cannot be winner after only one 1 turn
-      //ctl.doTurn(false)
-      //ctl.checkForWinner should be(expectedResult)
-
       //should be winner at end of game
-      //ctl.doGame(false)
-      //ctl.checkForWinner should not be(expectedResult)
+      ctl.doGame(false)
+      ctl.checkForWinner should not be(expectedResult)
     }
 
-    /*
-    for doMove, doTurn, & doGame
-    eclipse required the parameter even though i made it
-      a default. The purpose is a flag for printing console
-      tests when troubleshooting
-    */    
+    //******* DO MOVE *******
+    it("doMove") { val ctl = Fixture.instance.controller
+      val StringResult0 = "Ender, Sabriel, Eragon, Artemis"
+      val StringResult1 = "Sabriel, Eragon, Artemis, Ender"
+
+      //******* initial check *******
+      ctl.initializeGame
+      ctl.get_deck.length should be(32)
+        //at start of game, each player should have 52 cards
+      ctl.showPlayerOrder should be(StringResult0)
+        //order at the start of a new game
+      
+      //******* first pass *******
+      ctl.doMove()
+      ctl.showPlayerOrder should be (StringResult1)
+        //next player should now be up
+
+      ctl.get_deck.length should be < (32)
+        //player Ender should have drew 1 or more cards
+          //in his turn before passing off to Sabriel
+        //we can assume there are always cards in the deck
+          //at the start of a game
+    }
+
   }
 }
