@@ -7,28 +7,17 @@ package main
 
 import model._
 import controller._
+import scratchpad._
 
 object Main {
   
   def main(args: Array[String]): Unit = {
-    val model = new Model
-    val ctrl = new Controller(model)
+    val mod = new Model
+    val ctrl = new Controller(mod)
+    val scratchpad = new Scratchpad(ctrl)
     
-    println("hi there!")
-
-    /***********************************************
-    * Test controller functions here               *
-    ***********************************************/
-    
-    /*
-    ctrl.initializeGame
-    //println(ctrl.showStrategies)
-    //println(ctrl.showGameArea)
-    //println(ctrl.showStrategies)
-    ctrl.set(0, 2)
-    ctrl.doGame(true)
-    println(ctrl.checkForWinner)
-    */
+    println("hi main!")
+    scratchpad.testdrive
     
     /***********************************************
     *          How to use                          *

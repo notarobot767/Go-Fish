@@ -6,6 +6,10 @@ Model Class
 
 package model
 
+import model.playing_cards._
+
 class Model {
-  println("hi model!")
+  object Game {
+    val deck = new Deck
+  }
 }

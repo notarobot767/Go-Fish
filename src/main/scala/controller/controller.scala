@@ -10,5 +10,5 @@ package controller
 import model._
 
 class Controller(val model: Model) {
-  println("hi contoller!")
+  val deckctl = new Deckctl(model.Game.deck)
 }
