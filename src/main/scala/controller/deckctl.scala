@@ -16,10 +16,13 @@ class Deckctl (deck: Deck) {
     newDeck
   }
   
+  private def deal = ???
+  
   //initiate a new deck
-  def init: Deck = {
+  def init = {
     deck.clear
     deck ++= shuffle(getNewDeck)
+    //deck.deal
   }
   
   //count number of cards

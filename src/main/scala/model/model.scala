@@ -7,9 +7,11 @@ Model Class
 package model
 
 import model.playing_cards._
+import model.players._
 
 class Model {
   object Game {
     val deck = new Deck
+    val players = new Players
   }
 }

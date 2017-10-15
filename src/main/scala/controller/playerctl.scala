@@ -2,29 +2,34 @@ package controller
 
 import model._
 import model.players._
-import scala.collection.mutable.map
+import scala.collection.mutable.Map
 
-class Playerctl (players: Players){
+class Playerctl (players: Players, deckctl: Deckctl) {
+  
+  //
+  def init = {
+    players.clear
+    for(p <- players.static_players) players.enqueue(Player(p))
+  }
   
   //advance order of players
-  def advance: Players = players.enqueue(players.dequeue)
+  def advance = players.enqueue(players.dequeue)
   
   //who is up next
-  def upNext: Player = players.tail.head
-  
-  /*
-  private def getLeaderboard: Map[Int -> List[Player]] = {
-    
-  }
-  */
+  def upNext: String = players.tail.head.toString
   
   //who is in the lead
-  def leader: Player = {
+  def leader: String = {
     //get leaderbard then parse
-    players.head
+    ???
   }
   
-  //show to player queue
-  def show: String = players.toString
+  //draw from deck and put card in hand of current player
+  def draw = ???
   
+  def show: String = {
+    var ans_str = ""
+    for(p <- players) ans_str += p.toString 
+    ans_str
+  }
 }
