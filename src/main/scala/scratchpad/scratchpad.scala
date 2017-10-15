@@ -12,5 +12,8 @@ class Scratchpad (ctrl: Controller) {
     //println(deckctl.draw)
     println(deckctl.count)
     println(deckctl.show)
+    
+    val playerctl = ctrl.playerctl
+    
   }
 }
