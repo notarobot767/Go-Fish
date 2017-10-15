@@ -9,5 +9,10 @@ package model.playing_cards
 import scala.collection.mutable.Queue
 
 class Deck extends Queue[Card] {
+  
+  //this of the suits of cards
+  val card_suits = List('S', 'C', 'H', 'D')
+  val card_ids = 2 to 14
+
   override def toString: String = this.mkString(", ")
 }

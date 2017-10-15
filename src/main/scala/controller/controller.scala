@@ -9,6 +9,6 @@ package controller
 
 import model._
 
-class Controller(val model: Model) {
+class Controller(model: Model) {
   val deckctl = new Deckctl(model.Game.deck)
 }

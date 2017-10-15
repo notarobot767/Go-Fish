@@ -9,15 +9,14 @@ case class Card(val id: Int, val suit: Char) {
   //suit H, D, C, S
   
   //map id to string face value; see Statics
-  def getFace(c_id: Int): Option[String] = c_id match {
-    case x if(x >= 2 && x <= 10) => Some(c_id.toString)
-    case 11 => Some("J")
-    case 12 => Some("Q")
-    case 13 => Some("K")
-    case 14 => Some("A")
-    case _ => None
+  def getFace: Char = id match {
+    case x if(x >= 2 && x <= 10) => x.toChar
+    case 11 => 'J'
+    case 12 => 'Q'
+    case 13 => 'K'
+    case 14 => 'A'
   }
 
   //string representation: ex) 2 of Hearts -> "[2-H]"
-  override def toString: String = "[" + this.getFace(this.id) + s"-$suit]"
+  override def toString: String = "[" + getFace + s"-$suit]"
 }
