@@ -7,7 +7,6 @@ package main
 
 import model._
 import controller._
-import scratchpad._
 
 object Main {
   
