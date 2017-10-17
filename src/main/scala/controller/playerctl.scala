@@ -10,7 +10,7 @@ class Playerctl (players: Players, deckctl: Deckctl) {
   //
   def init = {
     players.clear
-    for(p <- players.static_players) players.enqueue(Player(p))
+    players ++= players.static_players.map(Player(_))
   }
   
   //advance order of players
