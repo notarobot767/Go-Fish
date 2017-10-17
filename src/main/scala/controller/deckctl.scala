@@ -6,14 +6,13 @@ import model.playing_cards._
 class Deckctl (deck: Deck) {
   
   //return a shuffled deck
-  private def shuffle(d: Deck): Deck = new Deck ++= util.Random.shuffle(d)
+  private def shuffle(d: List[Card]): Deck = new Deck ++= util.Random.shuffle(d)
   
   //return a new unshuffled deck
-  private def getNewDeck: Deck = {
-    val newDeck = new Deck
-    for (card_id <- deck.card_ids) for (suit <- deck.card_suits)
-      newDeck.enqueue(Card(card_id, suit))
-    newDeck
+  def getNewDeck(card_ids: List[Int]): List[Card] = {
+    if(card_ids.nonEmpty) deck.card_suits.map(
+      s => Card(card_ids.head, s)) ++: getNewDeck(card_ids.tail)
+    else List[Card]()
   }
   
   private def deal = ???
@@ -21,7 +20,7 @@ class Deckctl (deck: Deck) {
   //initiate a new deck
   def init = {
     deck.clear
-    deck ++= shuffle(getNewDeck)
+    deck ++= shuffle(getNewDeck(deck.card_ids))
     //deck.deal
   }
   
