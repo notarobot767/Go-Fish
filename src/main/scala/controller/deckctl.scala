@@ -32,8 +32,8 @@ class Deckctl (deck: Deck) {
   def draw: Card = deck.dequeue
   
   //text show of cards
-  def show: String = deck.toString
-  
   def isEmpty: Boolean = deck.isEmpty
   def nonEmpty: Boolean = deck.nonEmpty
+  
+  def show: String = deck.toString
 }

@@ -20,28 +20,30 @@ class Playerctl (players: Players, deckctl: Deckctl) {
   def upNext: String = players.tail.head.toString
   
   //list of highest highscores
-  private getLeader: List[String] = {
-    val leaderboard = Map[Int -> List[String]]
-    players.foreach(p => lead += p.points +: leaderboard.getOrElse(p.points, List[String]()))
-    leaderboard.max._2
+  def getLeader: List[String] = {
+    val leaderboard = Map[Int, List[String]]()
+    players.foreach(p =>
+      leaderboard += (p.points -> (p.name +: leaderboard.getOrElse(p.points, List[String]())))
+    )
+    leaderboard.maxBy(_._1)._2
   }
- 
+  
   //draw from deck and put card in hand of current player
   //false means no cards to draw
   def draw: Boolean = {
     if(deckctl.isEmpty) false
     else {
-      val card = deckctl.draw
-      val hand = players.head.hand
-      hand += (card.id -> card +: hand.getOrElse(card.id, List[Card]))
+      //move card to player hand
+      val (card, hand) = (deckctl.draw, players.head.hand)
+      hand += (card.id -> (card +: hand.getOrElse(card.id, List[Card]())))
+      
       //check for 4
       true
     }
   }
   
-  def show: String = {
-    var ans_str = ""
-    for(p <- players) ans_str += p.toString 
-    ans_str
-  }
+  def show: String = players.map(
+    p => s"$p: ${p.points} " +
+    p.getHandList.mkString(", ")
+    ).mkString("\n")
 }

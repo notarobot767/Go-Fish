@@ -16,7 +16,6 @@ object Main {
     val ctrl = new Controller(mod)
     val scratchpad = new Scratchpad(ctrl)
     
-    println("hi main!")
     scratchpad.testdrive
     
     /***********************************************

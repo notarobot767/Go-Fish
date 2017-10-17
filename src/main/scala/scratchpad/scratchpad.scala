@@ -4,12 +4,12 @@ import controller._
 
 class Scratchpad (ctrl: Controller) {
   def testdrive {
-    println("hi testdrive!")
-    val deckctl = ctrl.deckctl
+    ctrl.gamectl.init
     
-    val playerctl = ctrl.playerctl
-    
-    ctrl.init
-    println(ctrl.showGameArea)
+    println(ctrl.gamectl.showGameArea)
+    println(ctrl.playerctl.getLeader)
+    ctrl.playerctl.draw
+    println(ctrl.gamectl.showGameArea)
+    println(ctrl.playerctl.getLeader)
   }
 }

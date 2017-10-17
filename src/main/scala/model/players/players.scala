@@ -9,7 +9,7 @@ import scala.collection.mutable.Queue
 class Players extends Queue[Player] {
   
   //player names separated by comma
-  override def toString: String = this.mkString(", ")
+  override def toString: String = this.mkString("\n")
   
   //4 static players
   val static_players = List (
