@@ -1,16 +1,18 @@
 package controller
 
-import model._
-
-class Gamectl(mod: Model, deckctl: Deckctl, playerctl: Playerctl) {
+class Gamectrl(deckctrl: Deckctrl, playerctrl: Playerctrl) {
+  //initially deal each player n cards
+  private def deal(n: Int) = ???
+  
   //start or restart a game
   def init = {
-    deckctl.init
-    playerctl.init
+    deckctrl.init
+    playerctrl.init
+    //deal(n)
   }
   
   //show game universe
-  def showGameArea: String = s"${playerctl.show}\n\n${deckctl.show}"
+  def showGameArea: String = s"${playerctrl.show}\n\n${deckctrl.show}"
   
   //is the game in an end state
   def isGameOver: Boolean = ???
@@ -25,7 +27,8 @@ class Gamectl(mod: Model, deckctl: Deckctl, playerctl: Playerctl) {
   def doMove = ???
   
   //complete one move for each player
-  def doTurn = for(m <- 1 to mod.players.length) doMove
+  def doTurn = ???
+  //for(m <- 1 to mod.players.length) doMove
   
   //complete moves until the game is over
   def doGame = while(!this.isGameOver) doMove

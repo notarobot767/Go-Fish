@@ -6,16 +6,16 @@ class Scratchpad (ctrl: Controller) {
   def testdrive {
     
     /*
-    ctrl.gamectl.init
-    println(ctrl.gamectl.showGameArea)
-    println(ctrl.playerctl.getLeader)
-    ctrl.playerctl.draw
-    println(ctrl.gamectl.showGameArea)
-    println(ctrl.playerctl.getLeader)
+    ctrl.gamectrl.init
+    println(ctrl.gamectrl.showGameArea)
+    println(ctrl.playerctrl.getLeader)
+    ctrl.playerctrl.draw
+    println(ctrl.gamectrl.showGameArea)
+    println(ctrl.playerctrl.getLeader)
     */
     
-    //println(ctrl.deckctl.getNewDeck2())
-    ctrl.gamectl.init
-    println(ctrl.gamectl.showGameArea)
+    //println(ctrl.deckctrl.getNewDeck2())
+    ctrl.gamectrl.init
+    println(ctrl.gamectrl.showGameArea)
   }
 }

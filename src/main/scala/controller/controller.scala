@@ -10,7 +10,7 @@ package controller
 import model._
 
 class Controller(model: Model) {
-  val deckctl = new Deckctl(model.deck)
-  val playerctl = new Playerctl(model.players, deckctl)
-  val gamectl = new Gamectl(model, deckctl, playerctl)
+  val deckctrl = new Deckctrl(model.deck)
+  val playerctrl = new Playerctrl(model.players)
+  val gamectrl = new Gamectrl(deckctrl, playerctrl)
 }

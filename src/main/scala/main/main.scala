@@ -11,11 +11,14 @@ import controller._
 object Main {
   
   def main(args: Array[String]): Unit = {
-    val mod = new Model
-    val ctrl = new Controller(mod)
-    val scratchpad = new Scratchpad(ctrl)
+    object Game {
+      val mod = new Model
+      val ctrl = new Controller(mod)
+      val scratchpad = new Scratchpad(ctrl)
+    }
     
-    scratchpad.testdrive
+    Game.ctrl.gamectrl.init
+    Game.scratchpad.testdrive
     
     /***********************************************
     *          How to use                          *

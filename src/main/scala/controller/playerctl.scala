@@ -5,7 +5,7 @@ import model.players._
 import model.playing_cards._
 import scala.collection.mutable.Map
 
-class Playerctl (players: Players, deckctl: Deckctl) {
+class Playerctrl (players: Players) {
   
   //
   def init = {
@@ -30,7 +30,8 @@ class Playerctl (players: Players, deckctl: Deckctl) {
   
   //draw from deck and put card in hand of current player
   //false means no cards to draw
-  def draw: Boolean = {
+  def draw(card: Option[Card]): Boolean = {
+    /*
     if(deckctl.isEmpty) false
     else {
       //move card to player hand
@@ -40,6 +41,8 @@ class Playerctl (players: Players, deckctl: Deckctl) {
       //check for 4
       true
     }
+    */
+    false
   }
   
   def show: String = players.map(
