@@ -9,16 +9,15 @@ import model._
 import controller._
 
 object Main {
-  
   def main(args: Array[String]): Unit = {
     object Game {
-      val mod = new Model
+      private val mod = new Model
       val ctrl = new Controller(mod)
       val scratchpad = new Scratchpad(ctrl)
+      ctrl.gamectrl.init
     }
-    
-    Game.ctrl.gamectrl.init
     Game.scratchpad.testdrive
+  }
     
     /***********************************************
     *          How to use                          *
@@ -26,11 +25,13 @@ object Main {
     * open a command promt/terminal in root folder *
     *                                              *
     * Method 1: (output to screen)                 *
-    *   type "sbt" then "run" or "test"            *
+    *   type "sbt" then                            *
+    *     "compile"                                *
+    *     "run"                                    *
+    *     "test"                                   *
     *                                              *
     * Method 2: (output to file)                   *
-    *   "sbt run > output.txt" or                  *
-    *   "sbr test > output.txt"                    *
+    *   "sbt run > output.txt"                     *
+    *   "sbt test > output.txt"                    *
     ***********************************************/
-  }
 }
