@@ -11,11 +11,16 @@ import controller._
 object Main {
   def main(args: Array[String]): Unit = {
     object Game {
-      private val mod = new Model
-      val ctrl = new Controller(mod)
+      //protect the model
+      private val model = new Model
+      val ctrl = new Controller(model)
       val scratchpad = new Scratchpad(ctrl)
+      //val view = new View(ctrl)
+      
+      //ensure the game is in a ready state
       ctrl.gamectrl.init
     }
+    //let's take a testdrive
     Game.scratchpad.testdrive
   }
     
@@ -26,9 +31,9 @@ object Main {
     *                                              *
     * Method 1: (output to screen)                 *
     *   type "sbt" then                            *
-    *     "compile"                                *
-    *     "run"                                    *
-    *     "test"                                   *
+    *     "compile" - compile the code             *
+    *     "run" - run the code                     *
+    *     "test" - run the test cases              *
     *                                              *
     * Method 2: (output to file)                   *
     *   "sbt run > output.txt"                     *
