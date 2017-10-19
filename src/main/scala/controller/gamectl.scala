@@ -2,13 +2,21 @@ package controller
 
 class Gamectrl(deckctrl: Deckctrl, playerctrl: Playerctrl) {
   //initially deal each player n cards
-  private def deal(n: Int) = ???
+  private def deal(n: Int) = {
+    for(i <- 1 to n) for(p <- 1 to playerctrl.getNumPlayers) {
+      val card = deckctrl.draw
+      if(playerctrl.draw(card)) playerctrl.pruneSet(card.get.id)
+      //println(s"dealing ${playerctrl.upNow} card $card")
+      playerctrl.advance
+    }
+  }
   
   //start or restart a game
   def init = {
     deckctrl.init
     playerctrl.init
-    //deal(n)
+    val starting_cards = 5
+    deal(starting_cards)
   }
   
   //show game universe

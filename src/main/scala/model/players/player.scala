@@ -17,8 +17,8 @@ case class Player(val name: String) {
   //cards in hand
   val hand = Map[Int, List[Card]]()
   
-  //needs sorting of map
-  def getHandList: List[Card] = {
-    hand.flatMap(i => i._2).toList
-  }
+  //sorts by card_id
+  //assumes cards with list in map are already sorted
+  //see playerctrl draw for cards of same id sorting
+  def getHandList: Seq[Card] = hand.toSeq.sortBy(_._1).flatMap(i => i._2)
 }

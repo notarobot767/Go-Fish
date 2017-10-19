@@ -9,6 +9,7 @@ class Deckctrl (deck: Deck) {
   private def shuffle(d: List[Card]): Deck = new Deck ++= util.Random.shuffle(d)
   
   //return a new unshuffled deck
+  //danger: recursion
   private def getNewDeck(card_ids: List[Int]): List[Card] = {
     if(card_ids.nonEmpty) deck.card_suits.map(
       s => Card(card_ids.head, s)) ++: getNewDeck(card_ids.tail)
