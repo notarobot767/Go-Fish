@@ -6,6 +6,7 @@ Hey you found me!
 package main
 
 import model._
+import model.misc._
 import controller._
 
 object Main {
@@ -19,6 +20,9 @@ object Main {
       
       //ensure the game is in a ready state
       ctrl.gamectrl.init
+      
+      //hi
+      println(Welcome.show)
     }
     //let's take a testdrive
     Game.scratchpad.testdrive
